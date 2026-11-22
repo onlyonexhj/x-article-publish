@@ -1,0 +1,14 @@
+{
+  "name": "x-article-publish",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Convert Markdown to X Article content_state and build a chunked payload for browser-side draft creation.",
+  "license": "MIT",
+  "scripts": {
+    "build": "node scripts/build-payload.mjs"
+  },
+  "dependencies": {
+    "@kaitox/x-article": "0.6.0"
+  }
+}

@@ -29,11 +29,10 @@ X 没有公开的文章发布 API。常见做法是把 HTML 粘贴进编辑器�
 1. 把整个目录放到你的 skills 目录，例如：
    - 项目级：`<project>/.trae/skills/x-article-publish/`
    - 全局：`~/.trae-cn/skills/x-article-publish/`
-2. 在临时目录安装转换依赖：
+2. 安装依赖（仓库自带 `package.json`，版本已锁定）：
 
 ```bash
-npm init -y
-npm i @kaitox/x-article@0.6.0
+npm install
 ```
 
 > 必须锁 0.6.0：0.6.2 依赖了不存在的 `@kaitox/relay-protocol@^0.5.3`。

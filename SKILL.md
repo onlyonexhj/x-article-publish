@@ -28,10 +28,10 @@ X 没有公开的文章 API。网页端用的是私有 GraphQL `ArticleEntityDra
 
 ## 步骤 1：转换
 
-在一个临时目录里安装转换库（`0.6.2` 依赖了不存在的版本，必须锁 `0.6.0`）：
+安装依赖（仓库自带 `package.json`，已锁 `0.6.0`；`0.6.2` 依赖了不存在的 `@kaitox/relay-protocol@^0.5.3`）：
 
 ```bash
-npm init -y && npm i @kaitox/x-article@0.6.0
+npm install
 ```
 
 用 [build-payload.mjs](scripts/build-payload.mjs) 生成 payload：
