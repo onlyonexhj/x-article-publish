@@ -4,11 +4,15 @@
 
 ## 1. 逐块注入 base64
 
-读 `chunks.json` 得到 base64 数组，逐块写入 `window.__csB64`。注入前先清空，避免上一轮残留：
+先读 `chunks.json`。`Exec` 运行在 V8 沙箱里，**没有 Node 的 `fs`**，所以要用 Shell 读出内容再作为字面量传进 `Exec`：
+
+```powershell
+# Shell：确认分块数量与每块长度
+Get-Content out/chunks.json -Raw | ConvertFrom-Json | ForEach-Object { $_.Length }
+```
 
 ```js
-const chunks = JSON.parse(require('fs').readFileSync('out/chunks.json', 'utf8'));
-
+// Exec：chunks 为上面从 chunks.json 读到的 base64 字符串数组
 await tools.browser_evaluate({ script: `window.__csB64 = ''; 'reset'` });
 
 for (const chunk of chunks) {

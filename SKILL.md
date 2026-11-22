@@ -91,6 +91,7 @@ node scripts/build-payload.mjs "D:/path/to/doc.md" ./out
 - **不要给页面起本地 HTTP 服务再 fetch**：浏览器进程访问 `127.0.0.1` 会 `Failed to fetch`（混合内容/CSP），老老实实分块注入。
 - **不要直接写编辑器 DOM**（`innerHTML` / `execCommand`）：React/Draft.js 状态不同步，保存后内容会丢或翻倍。
 - 分块注入前先 `window.__csB64 = ''`，避免上一轮残留拼接。
+- **图片不处理**：只传文本，Markdown 里的图片会丢。需要图片时得先走 X 的媒体上传拿 `media_id`，再放进 `content_state`。
 
 ## 校验清单
 
